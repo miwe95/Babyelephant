@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1d587d73-8799-4a98-a303-23f3f3fc1189" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Baby Elephant Simulator/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Baby Elephant Simulator/Library/ArtifactDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Baby Elephant Simulator/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Baby Elephant Simulator/Library/CurrentLayout-default.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Baby Elephant Simulator/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Baby Elephant Simulator/Library/SourceAssetDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Baby Elephant Simulator/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Baby Elephant Simulator/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="cfd14635-bbd1-403c-9c4c-37be07657370" />
+  <component name="ProjectId" id="1kNBAIvvke2nrcvOHSpLeZZFpzt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d587d73-8799-4a98-a303-23f3f3fc1189" name="Default Changelist" comment="" />
+      <created>1605531024460</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605531024460</updated>
+      <workItem from="1605531025739" duration="38000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
