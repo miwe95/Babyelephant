@@ -33,7 +33,7 @@ public class ThirdPersonCameraControl : MonoBehaviour
 
         transform.LookAt(Target);
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftAlt))
         {
             Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
         }

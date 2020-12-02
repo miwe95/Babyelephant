@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
-    public float Speed = 5.0f;
+    public float speed_ = 5.0f;
      Animator animator_;
      void Start()
     {
@@ -23,14 +23,28 @@ public class ThirdPersonMovement : MonoBehaviour
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
 
-        Vector3 playerMovement = new Vector3(hor, 0f, ver) * Speed * Time.deltaTime;
-        transform.Translate(playerMovement, Space.Self);
-        animator_.SetBool("is_running", true);
-         if(hor != 0 || ver != 0)
-            animator_.SetBool("is_running", true);
-
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            animator_.SetBool("is_walking", false);
+            speed_=20.0f;
+            Vector3 playerMovement = new Vector3(hor, 0f, ver) * speed_ * Time.deltaTime;
+            transform.Translate(playerMovement, Space.Self);
+             if(hor != 0 || ver != 0)
+                 animator_.SetBool("is_running", true);
+             else
+                 animator_.SetBool("is_running", false);
+        }
         else
+        {
             animator_.SetBool("is_running", false);
+            speed_=5.0f;
+            Vector3 playerMovement = new Vector3(hor, 0f, ver) * speed_ * Time.deltaTime;
+            transform.Translate(playerMovement, Space.Self);
+             if(hor != 0 || ver != 0)
+                 animator_.SetBool("is_walking", true);
+             else
+                 animator_.SetBool("is_walking", false);
+        }
 
     }
 }
