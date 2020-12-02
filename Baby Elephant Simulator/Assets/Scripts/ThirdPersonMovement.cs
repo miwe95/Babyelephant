@@ -26,7 +26,7 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector3 playerMovement = new Vector3(hor, 0f, ver) * Speed * Time.deltaTime;
         transform.Translate(playerMovement, Space.Self);
         animator_.SetBool("is_running", true);
-         if(hor > 0 || ver > 0)
+         if(hor != 0 || ver != 0)
             animator_.SetBool("is_running", true);
 
         else
