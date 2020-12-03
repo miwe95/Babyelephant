@@ -4,87 +4,87 @@ using UnityEngine;
 
 public class ThirdPersonCameraControl : MonoBehaviour
 {
-     float rotationSpeed = 1;
-    public Transform Target, Player;
-    float mouseX, mouseY;
+  float rotationSpeed = 1;
+  public Transform Target, Player;
+  float mouseX, mouseY;
 
 
-    public Transform Obstruction;
-    float zoomSpeed = 2f;
-    
-    void Start()
+  public Transform Obstruction;
+  float zoomSpeed = 2f;
+
+  void Start()
+  {
+    Obstruction = Target;
+    Cursor.visible = false;
+    Cursor.lockState = CursorLockMode.Locked;
+  }
+
+  private void LateUpdate()
+  {
+    CamControl();
+    ViewObstructed();
+  }
+
+
+  void CamControl()
+  {
+    mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
+    mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
+    mouseY = Mathf.Clamp(mouseY, -35, 60);
+
+    transform.LookAt(Target);
+    Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+    if (Input.GetKey(KeyCode.LeftAlt))
     {
-        Obstruction = Target;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+      Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
     }
-
-    private void LateUpdate()
+    else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
     {
-        CamControl();
-        ViewObstructed();
+      Player.rotation = Quaternion.Euler(0, mouseX + 45.0f, 0.0f);
     }
-    
-
-    void CamControl()
+    else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
     {
-        mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
-        mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
-        mouseY = Mathf.Clamp(mouseY, -35, 60);
-
-        transform.LookAt(Target);
-        Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-        if (Input.GetKey(KeyCode.LeftAlt))
-        {
-            Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-        }
-        else if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
-        {
-            Player.rotation = Quaternion.Euler(0, mouseX + 45.0f, 0.0f);
-        }
-        else if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
-        {
-            Player.rotation = Quaternion.Euler(0, mouseX - 45.0f, 0.0f);
-        }
-        else if(Input.GetKey(KeyCode.D))
-        {
-           Player.rotation = Quaternion.Euler(0, mouseX + 90.0f, 0.0f);
-        }
-        else if(Input.GetKey(KeyCode.A))
-        {
-           Player.rotation = Quaternion.Euler(0, mouseX + 270.0f, 0.0f);  
-        }
-        else if(Input.GetKey(KeyCode.S))
-        {
-           Player.rotation = Quaternion.Euler(0, mouseX + 180, 0.0f);  
-        }
-        else  
-        {
-            Player.rotation = Quaternion.Euler(0, mouseX, 0);
-        }
+      Player.rotation = Quaternion.Euler(0, mouseX - 45.0f, 0.0f);
     }
-    
-
-    void ViewObstructed()
+    else if (Input.GetKey(KeyCode.D))
     {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, Target.position - transform.position, out hit, 4.5f))
-        {
-            if (hit.collider.gameObject.tag != "Player")
-            {
-                Obstruction = hit.transform;
-                Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
-                
-                if(Vector3.Distance(Obstruction.position, transform.position) >= 3f && Vector3.Distance(transform.position, Target.position) >= 1.5f)
-                    transform.Translate(Vector3.forward * zoomSpeed * Time.deltaTime);
-            }
-            else
-            {
-                Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-                if (Vector3.Distance(transform.position, Target.position) < 4.5f)
-                    transform.Translate(Vector3.back * zoomSpeed * Time.deltaTime);
-            }
-        }
+      Player.rotation = Quaternion.Euler(0, mouseX + 90.0f, 0.0f);
     }
+    else if (Input.GetKey(KeyCode.A))
+    {
+      Player.rotation = Quaternion.Euler(0, mouseX + 270.0f, 0.0f);
+    }
+    else if (Input.GetKey(KeyCode.S))
+    {
+      Player.rotation = Quaternion.Euler(0, mouseX + 180, 0.0f);
+    }
+    else
+    {
+      Player.rotation = Quaternion.Euler(0, mouseX, 0);
+    }
+  }
+
+
+  void ViewObstructed()
+  {
+    RaycastHit hit;
+
+    if (Physics.Raycast(transform.position, Target.position - transform.position, out hit, 4.5f))
+    {
+      if (hit.collider.gameObject.tag != "Player")
+      {
+        Obstruction = hit.transform;
+        Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+
+        if (Vector3.Distance(Obstruction.position, transform.position) >= 3f && Vector3.Distance(transform.position, Target.position) >= 1.5f)
+          transform.Translate(Vector3.forward * zoomSpeed * Time.deltaTime);
+      }
+      else
+      {
+        Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+        if (Vector3.Distance(transform.position, Target.position) < 4.5f)
+          transform.Translate(Vector3.back * zoomSpeed * Time.deltaTime);
+      }
+    }
+  }
 }
