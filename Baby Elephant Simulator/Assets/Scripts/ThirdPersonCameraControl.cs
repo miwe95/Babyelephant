@@ -8,6 +8,7 @@ public class ThirdPersonCameraControl : MonoBehaviour
     public Transform Target, Player;
     float mouseX, mouseY;
 
+
     public Transform Obstruction;
     float zoomSpeed = 2f;
     
@@ -32,14 +33,33 @@ public class ThirdPersonCameraControl : MonoBehaviour
         mouseY = Mathf.Clamp(mouseY, -35, 60);
 
         transform.LookAt(Target);
-
+        Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
         if (Input.GetKey(KeyCode.LeftAlt))
         {
             Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
         }
-        else
+        else if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
-            Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+            Player.rotation = Quaternion.Euler(0, mouseX + 45.0f, 0.0f);
+        }
+        else if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            Player.rotation = Quaternion.Euler(0, mouseX - 45.0f, 0.0f);
+        }
+        else if(Input.GetKey(KeyCode.D))
+        {
+           Player.rotation = Quaternion.Euler(0, mouseX + 90.0f, 0.0f);
+        }
+        else if(Input.GetKey(KeyCode.A))
+        {
+           Player.rotation = Quaternion.Euler(0, mouseX + 270.0f, 0.0f);  
+        }
+        else if(Input.GetKey(KeyCode.S))
+        {
+           Player.rotation = Quaternion.Euler(0, mouseX + 180, 0.0f);  
+        }
+        else  
+        {
             Player.rotation = Quaternion.Euler(0, mouseX, 0);
         }
     }
