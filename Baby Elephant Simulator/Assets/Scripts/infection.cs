@@ -10,10 +10,16 @@ public class infection : MonoBehaviour
     public LayerMask whatIsGround;
 
     public Vector3 walkPoint;
-    bool walkPointSet;
+    bool walkPointSet; 
     public float walkPointRange;
 
     public bool hasCorona;
+    public float infectionChance;
+    float infectionRange = 5;
+    bool personInRange;
+    float infectionRate;
+
+    public GameObject sick_bean;
 
     // Start is called before the first frame update
 
@@ -22,6 +28,12 @@ public class infection : MonoBehaviour
     void Update()
     {
         Patroling();
+
+        if (hasCorona)
+        {
+
+        }
+
     }
 
     void Patroling()
@@ -56,4 +68,26 @@ public class infection : MonoBehaviour
             walkPointSet = true;
         }
     }
+
+    bool getCoronaStatus()
+    {
+        return hasCorona;
+    }
+
+    void OnCollisionEnter(Collision hitInfo)
+    {
+        Debug.Log("J");
+        if (hitInfo.collider.GetComponent<infection>().getCoronaStatus())
+        {
+
+            if (Random.value > infectionRate)
+            {
+                hasCorona = true;
+                Instantiate(sick_bean, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+        }
+
+    }
+
 }
