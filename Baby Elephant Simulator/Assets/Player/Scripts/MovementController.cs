@@ -104,6 +104,11 @@ public class MovementController : MonoBehaviour
       animator.SetTrigger("jump");
     }
 
+    if (characterController.isGrounded && Input.GetKey(KeyCode.Q))
+    {
+      animator.SetTrigger("roll");
+    }
+
     Vector3 moveDirection = desiredMoveDirection * movementSpeed * run_speed * Time.deltaTime;
     moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z);
     characterController.Move(moveDirection);
