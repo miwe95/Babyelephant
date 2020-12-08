@@ -106,7 +106,13 @@ public class MovementController : MonoBehaviour
 
     if (characterController.isGrounded && Input.GetKey(KeyCode.Q))
     {
-      animator.SetTrigger("roll");
+      animator.SetBool("spin", true);
+      movementSpeed = 30;
+    }
+    else
+    {
+      animator.SetBool("spin", false);
+      movementSpeed = 10;
     }
 
     Vector3 moveDirection = desiredMoveDirection * movementSpeed * run_speed * Time.deltaTime;
