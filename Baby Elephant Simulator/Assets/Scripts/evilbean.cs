@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class infection : MonoBehaviour
+public class evilbean : MonoBehaviour
 {
     public NavMeshAgent Agent;
 
@@ -13,14 +13,6 @@ public class infection : MonoBehaviour
     bool walkPointSet; 
     public float walkPointRange;
 
-    public bool hasCorona;
-    public float infectionChance;
-    float infectionRange = 5;
-    bool personInRange;
-    float infectionRate;
-
-    public GameObject sick_bean;
-
     // Start is called before the first frame update
 
 
@@ -28,11 +20,6 @@ public class infection : MonoBehaviour
     void Update()
     {
         Patroling();
-
-        if (hasCorona)
-        {
-
-        }
 
     }
 
@@ -67,27 +54,6 @@ public class infection : MonoBehaviour
         {
             walkPointSet = true;
         }
-    }
-
-    public bool getCoronaStatus()
-    {
-        return hasCorona;
-    }
-
-    void OnCollisionEnter(Collision hitInfo)
-    {
-        Debug.Log("J");
-        if (hitInfo.collider.GetComponent<infection>().getCoronaStatus())
-        {
-
-            if (Random.value > infectionRate)
-            {
-                hasCorona = true;
-                Instantiate(sick_bean, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-        }
-
     }
 
 }
