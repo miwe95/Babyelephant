@@ -94,8 +94,6 @@ public class MovementController : MonoBehaviour
     Gravity -= 9.8f * Time.deltaTime;
     Gravity *= gravityMultiplyer;
 
-    var verticalVelocity = 0.0f;
-
     if (characterController.isGrounded && Input.GetKey(KeyCode.Space))
     {
       //Gravity = jumpHeight * Time.deltaTime;
