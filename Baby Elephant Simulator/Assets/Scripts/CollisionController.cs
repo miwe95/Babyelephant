@@ -31,7 +31,8 @@ public class CollisionController : MonoBehaviour
     if (other.gameObject.tag == "Player")
     {
       Debug.Log("crashed");
-      rb.AddForce(new Vector3(0, Random.Range(1, 100), 0) * thrust, ForceMode.Impulse);
+      rb.AddForce(new Vector3(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2)) * thrust, ForceMode.Impulse);
+      rb.transform.Rotate(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2), Space.Self);
     }
     myAgent.velocity = rb.velocity;
   }
