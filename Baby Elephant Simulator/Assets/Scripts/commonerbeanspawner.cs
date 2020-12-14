@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Commonerbeanspawner : MonoBehaviour
+public class commonerbeanspawner : MonoBehaviour
 {
   private float spawnTimer = 0f;
   private float spawnCooldown = 5f;

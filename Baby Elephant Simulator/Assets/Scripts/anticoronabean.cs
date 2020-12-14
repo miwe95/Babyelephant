@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Anticoronabean : MonoBehaviour
+public class anticoronabean : MonoBehaviour
 {
     public NavMeshAgent Agent;
 
