@@ -9,15 +9,14 @@ public class commonerbeanspawner : MonoBehaviour
   public float commonerCounter = 0f;
   public GameObject commonerPrefab;
   public Transform commonerSpawnpoint;
-
-  void Start()
-  {
-  }
-
-  // Update is called once per frame
+  private float spawnChance = 0f;
+  
   void Update()
   {
-    if (spawnTimer >= spawnCooldown)
+    
+    spawnChance = Random.Range(0, 100);
+    
+    if ((spawnTimer >= spawnCooldown) && (spawnChance > 50))
     {
       spawnTimer = 0;
       if (commonerCounter <= 10)
@@ -26,6 +25,11 @@ public class commonerbeanspawner : MonoBehaviour
         commonerCounter++;
       }
     }
+    else if ((spawnTimer >= spawnCooldown) && (spawnChance <= 50))
+    {
+      spawnTimer = 0;
+    }
+
     spawnTimer += Time.deltaTime;
   }
 }

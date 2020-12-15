@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class commoner : MonoBehaviour
 {
@@ -20,6 +22,10 @@ public class commoner : MonoBehaviour
   private float assemblyTimer = 0f;
   private float assembyCooldown = 20f;
   private float patrolingCooldown = 20f;
+  private float conversionTimer = 0f;
+  public GameObject Enemy;
+  
+  public bool inConversion = false;
 
   void Start()
   {
@@ -36,29 +42,56 @@ public class commoner : MonoBehaviour
   void Update()
   {
 
-    if (assemblyTimer >= assembyCooldown)
+    if (!inConversion)
     {
-      patrolingCooldown -= Time.deltaTime;
-      transform.LookAt(assemblepoint.position);
-      transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+      if (assemblyTimer >= assembyCooldown)
+      {
+        patrolingCooldown -= Time.deltaTime;
+        transform.LookAt(assemblepoint.position);
+        transform.Rotate(new Vector3(0, -90, 0), Space.Self);
 
-      if (Vector3.Distance(transform.position, assemblepoint.position) > 1f)
-      {
-        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+        if (Vector3.Distance(transform.position, assemblepoint.position) > 1f)
+        {
+          transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+        }
+        if (patrolingCooldown <= 0)
+        {
+          assemblyTimer = 0;
+        }
       }
-      if (patrolingCooldown <= 0)
+      else
       {
-        assemblyTimer = 0;
+        Patroling();
+ 
+        patrolingCooldown = Random.Range(80, 160);
       }
     }
     else
     {
-      Patroling();
-      assemblyTimer += Time.deltaTime;
-      patrolingCooldown = Random.Range(80, 160);
+      conversionTimer += Time.deltaTime;
+      if (conversionTimer >= 5f)
+      {
+        Instantiate(Enemy, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+      }
     }
 
+  }
 
+  private void OnCollisionEnter(Collision other)
+  {
+    if (other.gameObject.CompareTag("Enemy"))
+    {
+      inConversion = true;
+    }
+  }
+
+  private void OnCollisionExit(Collision other)
+  {
+    if (other.gameObject.CompareTag("Enemy"))
+    {
+      inConversion = false;
+    }
   }
 
   void Patroling()
@@ -71,6 +104,8 @@ public class commoner : MonoBehaviour
     {
       Agent.SetDestination(walkPoint);
     }
+    
+
 
     Vector3 distanceToWalkPoint = transform.position - walkPoint;
 

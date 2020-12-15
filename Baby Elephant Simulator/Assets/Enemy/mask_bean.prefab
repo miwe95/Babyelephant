@@ -142,6 +142,8 @@ MonoBehaviour:
   walkPointRange: 20
   assemblepoint: {fileID: 1888709914924625788, guid: 88bbaeeacb438bb42995ae1f682043f3,
     type: 3}
+  Enemy: {fileID: 5426486192339078422, guid: f75796ac6c243c726bba34586c2a0d6a, type: 3}
+  inConversion: 0
 --- !u!195 &6314756807808684719
 NavMeshAgent:
   m_ObjectHideFlags: 0
