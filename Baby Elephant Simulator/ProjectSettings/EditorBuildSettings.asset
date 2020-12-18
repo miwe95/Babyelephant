@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/fy_PoolParty.unity
     guid: 64c3a906a3f9b9e4282bcbd4b94db57f
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 74ce0f57861f542fc93f12348b74afb4
   m_configObjects: {}
