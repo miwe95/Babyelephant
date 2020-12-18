@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
   public void PlayGame()
   {
     // SceneManager.LoadScene(newGameScene);
-    SceneManager.LoadScene("fy_PoolParty");
+    SceneManager.LoadScene("TestRoom");
   }
 
   public void QuitGame()
