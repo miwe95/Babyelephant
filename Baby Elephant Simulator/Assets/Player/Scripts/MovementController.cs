@@ -16,17 +16,19 @@ public class MovementController : MonoBehaviour
   [SerializeField] float allowRotation = 0.1f;
   [SerializeField] float movementSpeed = 10f;
   [SerializeField] float gravityMultiplyer = 0.5f;
-  [SerializeField] float jumpHeight = 5f;
+  [SerializeField] float jumpHeight = 1f;
   [SerializeField] float run_speed = 1f;
   private Vector3 moveDirection;
   private float gravityValue = -30.81f;
   private Vector3 playerVelocity;
+  public bool super_jump;
 
   // Start is called before the first frame update
   void Start()
   {
     characterController = GetComponent<CharacterController>();
     cam = Camera.main;
+    super_jump = false;
     animator = GetComponent<Animator>();
   }
 
@@ -96,9 +98,14 @@ public class MovementController : MonoBehaviour
 
     if (characterController.isGrounded && Input.GetKey(KeyCode.Space))
     {
-      //Gravity = jumpHeight * Time.deltaTime;
+      if (super_jump)
+      {
+        playerVelocity.y += Mathf.Sqrt(25 * -3.0f * gravityValue);
+        super_jump = false;
+      }
+      else
+        playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
       Debug.Log("Jumped");
-      playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
       animator.SetTrigger("jump");
     }
 
