@@ -24,8 +24,10 @@ public class commoner : MonoBehaviour
   private float patrolingCooldown = 20f;
   private float conversionTimer = 0f;
   public GameObject Enemy;
-  
+
   public bool inConversion = false;
+  public GameObject player;
+  private Game game;
 
   void Start()
   {
@@ -35,8 +37,7 @@ public class commoner : MonoBehaviour
 
     assembyCooldown = Random.Range(80, 160);
     patrolingCooldown = Random.Range(80, 160);
-
-
+    game = GameObject.Find("Benjamin Blümchen").GetComponent<Game>();
   }
 
   void Update()
@@ -62,7 +63,7 @@ public class commoner : MonoBehaviour
       else
       {
         Patroling();
- 
+
         patrolingCooldown = Random.Range(80, 160);
       }
     }
@@ -72,6 +73,7 @@ public class commoner : MonoBehaviour
       if (conversionTimer >= 5f)
       {
         Instantiate(Enemy, transform.position, Quaternion.identity);
+        game.corona_bean_counter++;
         Destroy(gameObject);
       }
     }
@@ -104,7 +106,7 @@ public class commoner : MonoBehaviour
     {
       Agent.SetDestination(walkPoint);
     }
-    
+
 
 
     Vector3 distanceToWalkPoint = transform.position - walkPoint;

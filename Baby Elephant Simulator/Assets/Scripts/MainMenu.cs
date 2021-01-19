@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
   public void PlayGame()
   {
     // SceneManager.LoadScene(newGameScene);
-    SceneManager.LoadScene("TestRoom");
+    SceneManager.LoadScene("CityScene");
   }
 
   public void QuitGame()
