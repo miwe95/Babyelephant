@@ -22,6 +22,8 @@ public class MovementController : MonoBehaviour
   private float gravityValue = -30.81f;
   private Vector3 playerVelocity;
   public bool super_jump;
+  public bool rage_mode;
+  public Transform transformBenjamin;
 
   // Start is called before the first frame update
   void Start()
@@ -29,6 +31,7 @@ public class MovementController : MonoBehaviour
     characterController = GetComponent<CharacterController>();
     cam = Camera.main;
     super_jump = false;
+    rage_mode = false;
     animator = GetComponent<Animator>();
   }
 
@@ -38,10 +41,17 @@ public class MovementController : MonoBehaviour
     InputX = Input.GetAxis("Horizontal");
     InputZ = Input.GetAxis("Vertical");
 
-
     DesiredMoveDirection();
     InputDecider();
     MovementManager();
+  }
+
+  void OnTriggerExit(Collider other)
+  {
+    if (other.gameObject.name == "worldcollider")
+    {
+      transformBenjamin.position = new Vector3(0, 0, 0);
+    }
   }
 
   void InputDecider()
@@ -50,8 +60,24 @@ public class MovementController : MonoBehaviour
 
     if (Input.GetKey(KeyCode.LeftShift) && Speed > allowRotation)
     {
-      run_speed = 2;
-      animator.SetFloat("move", 1f);
+      if (!rage_mode)
+      {
+        run_speed = 2;
+        animator.SetFloat("move", 1f);
+        RotationManager();
+      }
+      else
+      {
+        run_speed = 8;
+        animator.SetFloat("move", 3f);
+        RotationManager();
+      }
+
+    }
+    else if (rage_mode)
+    {
+      run_speed = 5;
+      animator.SetFloat("move", 2f);
       RotationManager();
     }
     else if (Speed > allowRotation)

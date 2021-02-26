@@ -29,7 +29,7 @@ public class object_controller : MonoBehaviour
     if (other.gameObject.tag == "Player")
     {
       rb.useGravity = true;
-      Debug.Log("crashed");
+      //Debug.Log("crashed");
       rb.AddForce(new Vector3(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2)) * thrust, ForceMode.Impulse);
       rb.transform.Rotate(Random.Range(0, 5), Random.Range(0, 5), Random.Range(0, 5), Space.Self);
     }
@@ -37,11 +37,11 @@ public class object_controller : MonoBehaviour
 
   void OnCollisionEnter(Collision other)
   {
-    Debug.Log("crashed");
+    //Debug.Log("crashed");
     if (other.gameObject.tag == "Player")
     {
       rb.useGravity = true;
-      Debug.Log("crashed");
+      // Debug.Log("crashed");
       rb.AddForce(new Vector3(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2)) * thrust, ForceMode.Impulse);
       rb.transform.Rotate(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2), Space.Self);
     }

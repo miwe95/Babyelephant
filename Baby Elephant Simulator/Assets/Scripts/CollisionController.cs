@@ -12,7 +12,7 @@ public class CollisionController : MonoBehaviour
   private Rigidbody rb;
   public float thrust = 1f;
   private NavMeshAgent myAgent;
-  
+
   private float physicsTimer = 0f;
   private float physicsCooldown = 5f;
   private bool collisionExit;
@@ -39,7 +39,7 @@ public class CollisionController : MonoBehaviour
       }
       physicsTimer += Time.deltaTime;
     }
- 
+
   }
 
   private void OnTriggerExit(Collider other)
@@ -52,7 +52,7 @@ public class CollisionController : MonoBehaviour
     if (other.gameObject.tag == "Player")
     {
       myAgent.enabled = false;
-      Debug.Log("crashed");
+      //Debug.Log("crashed");
       rb.AddForce(new Vector3(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2)) * thrust, ForceMode.Impulse);
       rb.transform.Rotate(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2), Space.Self);
     }

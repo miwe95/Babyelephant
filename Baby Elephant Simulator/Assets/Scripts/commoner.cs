@@ -62,6 +62,7 @@ public class commoner : MonoBehaviour
       }
       else
       {
+        //if (transform.position.z <= 0 )
         Patroling();
 
         patrolingCooldown = Random.Range(80, 160);
@@ -80,12 +81,24 @@ public class commoner : MonoBehaviour
 
   }
 
+  void OnTriggerExit(Collider other)
+  {
+    if (other.gameObject.name == "worldcollider")
+    {
+      Destroy(gameObject);
+      game.point_counter -= 1;
+
+    }
+  }
+
   private void OnCollisionEnter(Collision other)
   {
     if (other.gameObject.CompareTag("Enemy"))
     {
       inConversion = true;
     }
+
+
   }
 
   private void OnCollisionExit(Collision other)
@@ -94,10 +107,13 @@ public class commoner : MonoBehaviour
     {
       inConversion = false;
     }
+
+
   }
 
   void Patroling()
   {
+    Debug.Log("patorlin");
     if (!walkPointSet)
     {
       SearchWalkPoint();
