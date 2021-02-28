@@ -24,6 +24,8 @@ public class MovementController : MonoBehaviour
   public bool super_jump;
   public bool rage_mode;
   public Transform transformBenjamin;
+  public Material m;
+  GameObject elephant_material;
 
   // Start is called before the first frame update
   void Start()
@@ -33,6 +35,7 @@ public class MovementController : MonoBehaviour
     super_jump = false;
     rage_mode = false;
     animator = GetComponent<Animator>();
+    elephant_material = GameObject.Find("Elephant");
   }
 
   // Update is called once per frame
@@ -68,7 +71,7 @@ public class MovementController : MonoBehaviour
       }
       else
       {
-        run_speed = 8;
+        run_speed = 2;
         animator.SetFloat("move", 3f);
         RotationManager();
       }
@@ -76,7 +79,7 @@ public class MovementController : MonoBehaviour
     }
     else if (rage_mode)
     {
-      run_speed = 5;
+      run_speed = 2;
       animator.SetFloat("move", 2f);
       RotationManager();
     }
@@ -126,8 +129,10 @@ public class MovementController : MonoBehaviour
     {
       if (super_jump)
       {
-        playerVelocity.y += Mathf.Sqrt(25 * -3.0f * gravityValue);
+        playerVelocity.y += Mathf.Sqrt(10 * -3.0f * gravityValue);
         super_jump = false;
+        m = elephant_material.GetComponent<SkinnedMeshRenderer>().material;
+        m.color = new Color(102f / 255f, 102f / 255f, 102f / 255f);
       }
       else
         playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);

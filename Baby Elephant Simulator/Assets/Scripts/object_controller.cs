@@ -30,7 +30,8 @@ public class object_controller : MonoBehaviour
     {
       rb.useGravity = true;
       //Debug.Log("crashed");
-      rb.AddForce(new Vector3(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2)) * thrust, ForceMode.Impulse);
+      Vector3 pos = other.gameObject.transform.forward;
+      rb.AddForce(pos * thrust, ForceMode.Impulse);
       rb.transform.Rotate(Random.Range(0, 5), Random.Range(0, 5), Random.Range(0, 5), Space.Self);
     }
   }
@@ -42,7 +43,8 @@ public class object_controller : MonoBehaviour
     {
       rb.useGravity = true;
       // Debug.Log("crashed");
-      rb.AddForce(new Vector3(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2)) * thrust, ForceMode.Impulse);
+      Vector3 pos = other.gameObject.transform.forward;
+      rb.AddForce(pos * thrust, ForceMode.Impulse);
       rb.transform.Rotate(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2), Space.Self);
     }
   }

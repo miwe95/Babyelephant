@@ -53,7 +53,8 @@ public class CollisionController : MonoBehaviour
     {
       myAgent.enabled = false;
       //Debug.Log("crashed");
-      rb.AddForce(new Vector3(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2)) * thrust, ForceMode.Impulse);
+      Vector3 dir = other.gameObject.transform.forward;
+      rb.AddForce(dir * thrust, ForceMode.Impulse);
       rb.transform.Rotate(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2), Space.Self);
     }
     myAgent.velocity = rb.velocity;
