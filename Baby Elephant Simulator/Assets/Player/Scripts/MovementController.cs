@@ -27,6 +27,10 @@ public class MovementController : MonoBehaviour
   public Material m;
   GameObject elephant_material;
 
+  public GameObject bulletPrefab;
+  public Transform bulletSpawnpoint;
+  GameObject clone;
+
   // Start is called before the first frame update
   void Start()
   {
@@ -124,6 +128,16 @@ public class MovementController : MonoBehaviour
 
     Gravity -= 9.8f * Time.deltaTime;
     Gravity *= gravityMultiplyer;
+
+    if (Input.GetKeyDown(KeyCode.E))
+    {
+
+      GameObject bullet = Instantiate(bulletPrefab, bulletSpawnpoint.position, Quaternion.identity) as GameObject;
+      Rigidbody bulletRB = bullet.GetComponentInChildren<Rigidbody>();
+      Debug.Log(bulletRB);
+      bulletRB.AddForce(transform.forward * 500, ForceMode.Impulse);
+
+    }
 
     if (characterController.isGrounded && Input.GetKey(KeyCode.Space))
     {

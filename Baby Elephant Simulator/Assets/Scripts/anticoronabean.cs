@@ -23,6 +23,7 @@ public class anticoronabean : MonoBehaviour
 
   private GameObject closestEnemy;
   private bool inConversion = false;
+  public AudioSource coronaLie;
 
   void Start()
   {
@@ -53,8 +54,10 @@ public class anticoronabean : MonoBehaviour
   {
     if (!inConversion)
     {
-      Patroling();
-
+      if (Agent.isActiveAndEnabled)
+      {
+        Patroling();
+      }
       if (chaseTimer >= chaseCooldown)
       {
         if ((closestEnemy = FindClosestEnemy()) != null)
@@ -79,6 +82,7 @@ public class anticoronabean : MonoBehaviour
       conversionTimer += Time.deltaTime;
       if (conversionTimer >= 5f)
       {
+        //coronaLie.Play();
         inConversion = false;
         chaseTimer = 0;
         conversionTimer = 0f;
@@ -91,9 +95,8 @@ public class anticoronabean : MonoBehaviour
   {
     if (other.gameObject.name == "worldcollider")
     {
-      Destroy(gameObject);
       game.point_counter += 1; game.corona_bean_counter--;
-
+      Destroy(gameObject);
     }
   }
 
@@ -107,7 +110,7 @@ public class anticoronabean : MonoBehaviour
     {
       inConversion = false;
       chaseTimer = 0;
-      Destroy(gameObject);
+      //Destroy(gameObject);
     }
 
 
@@ -129,7 +132,10 @@ public class anticoronabean : MonoBehaviour
     }
     else
     {
-      Agent.SetDestination(walkPoint);
+      if (Agent.isActiveAndEnabled)
+      {
+        Agent.SetDestination(walkPoint);
+      }
     }
 
 

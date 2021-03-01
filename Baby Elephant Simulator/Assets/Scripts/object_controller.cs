@@ -26,7 +26,15 @@ public class object_controller : MonoBehaviour
 
   void OnTriggerEnter(Collider other)
   {
-    if (other.gameObject.tag == "Player")
+    if (other.gameObject.name == "Benjamin Blümchen" && gameObject.name == "Gas_station_A")
+    {
+      rb.useGravity = true;
+      //Debug.Log("crashed");
+      Vector3 pos = other.gameObject.transform.up;
+      rb.AddForce(pos * thrust, ForceMode.Impulse);
+      rb.transform.Rotate(Random.Range(0, 5), Random.Range(0, 5), Random.Range(0, 5), Space.Self);
+    }
+    else if (other.gameObject.name == "Benjamin Blümchen")
     {
       rb.useGravity = true;
       //Debug.Log("crashed");
@@ -39,7 +47,15 @@ public class object_controller : MonoBehaviour
   void OnCollisionEnter(Collision other)
   {
     //Debug.Log("crashed");
-    if (other.gameObject.tag == "Player")
+    if (other.gameObject.name == "Benjamin Blümchen" && gameObject.name == "Gas_station_A")
+    {
+      rb.useGravity = true;
+      //Debug.Log("crashed");
+      Vector3 pos = other.gameObject.transform.up;
+      rb.AddForce(pos * thrust, ForceMode.Impulse);
+      rb.transform.Rotate(Random.Range(0, 5), Random.Range(0, 5), Random.Range(0, 5), Space.Self);
+    }
+    else if (other.gameObject.name == "Benjamin Blümchen")
     {
       rb.useGravity = true;
       // Debug.Log("crashed");

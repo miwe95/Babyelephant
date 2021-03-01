@@ -29,6 +29,9 @@ public class commoner : MonoBehaviour
   public GameObject player;
   private Game game;
 
+  public AudioSource audio_;
+  public AudioClip audio_clip;
+
   void Start()
   {
 
@@ -62,10 +65,11 @@ public class commoner : MonoBehaviour
       }
       else
       {
-        //if (transform.position.z <= 0 )
-        Patroling();
-
-        patrolingCooldown = Random.Range(80, 160);
+        if (Agent.isActiveAndEnabled)
+        {
+          Patroling();
+          patrolingCooldown = Random.Range(80, 160);
+        }
       }
     }
     else
@@ -91,14 +95,20 @@ public class commoner : MonoBehaviour
     }
   }
 
+  void OnTriggerEnter(Collider other)
+  {
+    if (other.gameObject == GameObject.Find("Benjamin Blümchen"))
+    {
+      audio_.PlayOneShot(audio_clip);
+    }
+  }
+
   private void OnCollisionEnter(Collision other)
   {
     if (other.gameObject.CompareTag("Enemy"))
     {
       inConversion = true;
     }
-
-
   }
 
   private void OnCollisionExit(Collision other)
@@ -107,20 +117,21 @@ public class commoner : MonoBehaviour
     {
       inConversion = false;
     }
-
-
   }
 
   void Patroling()
   {
-    Debug.Log("patorlin");
+
     if (!walkPointSet)
     {
       SearchWalkPoint();
     }
     else
     {
-      Agent.SetDestination(walkPoint);
+      if (Agent.isActiveAndEnabled)
+      {
+        Agent.SetDestination(walkPoint);
+      }
     }
 
 
