@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Assembly
   - Commoner
+  - musicplayer
+  - musicplayer_runforever
+  - background_audio
   layers:
   - Default
   - TransparentFX
