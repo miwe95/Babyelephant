@@ -28,9 +28,8 @@ public class MovementController : MonoBehaviour
   GameObject elephant_material;
   public AudioSource rageSound;
   public AudioSource superJump;
-  public AudioSource blob;
 
-    public GameObject bulletPrefab;
+  public GameObject bulletPrefab;
   public Transform bulletSpawnpoint;
   GameObject clone;
 
@@ -134,7 +133,7 @@ public class MovementController : MonoBehaviour
 
     if (Input.GetKeyDown(KeyCode.E))
     {
-      blob.Play();
+
       GameObject bullet = Instantiate(bulletPrefab, bulletSpawnpoint.position, Quaternion.identity) as GameObject;
       Rigidbody bulletRB = bullet.GetComponentInChildren<Rigidbody>();
       Debug.Log(bulletRB);
