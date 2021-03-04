@@ -78,7 +78,8 @@ public class commoner : MonoBehaviour
       if (conversionTimer >= 5f)
       {
         Instantiate(Enemy, transform.position, Quaternion.identity);
-        game.corona_bean_counter++;
+        game.GiveBean(1);
+        // game.corona_bean_counter++;
         Destroy(gameObject);
       }
     }
@@ -90,7 +91,8 @@ public class commoner : MonoBehaviour
     if (other.gameObject.name == "worldcollider")
     {
       Destroy(gameObject);
-      game.point_counter -= 1;
+      game.TakePoint(1);
+      // game.point_counter -= 1;
 
     }
   }

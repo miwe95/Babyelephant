@@ -95,7 +95,10 @@ public class anticoronabean : MonoBehaviour
   {
     if (other.gameObject.name == "worldcollider")
     {
-      game.point_counter += 1; game.corona_bean_counter--;
+      game.GivePoint(1);
+      //game.point_counter += 1;
+      game.TakeBean(1);
+      //game.corona_bean_counter--;
       Destroy(gameObject);
     }
   }
