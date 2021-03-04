@@ -78,7 +78,7 @@ public class commoner : MonoBehaviour
       if (conversionTimer >= 5f)
       {
         Instantiate(Enemy, transform.position, Quaternion.identity);
-        game.GiveBean(1);
+        //game.GiveBean(1);
         game.TakeHealth(1);
         // game.corona_bean_counter++;
         Destroy(gameObject);
