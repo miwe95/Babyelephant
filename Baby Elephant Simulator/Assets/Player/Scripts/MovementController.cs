@@ -26,6 +26,8 @@ public class MovementController : MonoBehaviour
   public Transform transformBenjamin;
   public Material m;
   GameObject elephant_material;
+  public AudioSource rageSound;
+  public AudioSource superJump;
 
   public GameObject bulletPrefab;
   public Transform bulletSpawnpoint;
@@ -143,6 +145,7 @@ public class MovementController : MonoBehaviour
     {
       if (super_jump)
       {
+        superJump.Play();
         playerVelocity.y += Mathf.Sqrt(10 * -3.0f * gravityValue);
         super_jump = false;
         m = elephant_material.GetComponent<SkinnedMeshRenderer>().material;

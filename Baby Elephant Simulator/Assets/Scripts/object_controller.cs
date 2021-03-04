@@ -11,7 +11,8 @@ public class object_controller : MonoBehaviour
   private MeshCollider col;
   private Rigidbody rb;
   public float thrust = 1f;
-
+  public ParticleSystem ps;
+  public GameObject gas_station;
   // Start is called before the first frame update
   void Start()
   {
@@ -24,15 +25,22 @@ public class object_controller : MonoBehaviour
   {
   }
 
+  void deleteGasStation()
+  {
+    Destroy(gameObject);
+  }
+
   void OnTriggerEnter(Collider other)
   {
     if (other.gameObject.name == "Benjamin Blümchen" && gameObject.name == "Gas_station_A")
     {
+      ps.Play();
       rb.useGravity = true;
       //Debug.Log("crashed");
       Vector3 pos = other.gameObject.transform.up;
-      rb.AddForce(pos * thrust, ForceMode.Impulse);
+      rb.AddForce(pos * thrust * 10, ForceMode.Impulse);
       rb.transform.Rotate(Random.Range(0, 5), Random.Range(0, 5), Random.Range(0, 5), Space.Self);
+      Invoke("deleteGasStation", 5);
     }
     else if (other.gameObject.name == "Benjamin Blümchen")
     {

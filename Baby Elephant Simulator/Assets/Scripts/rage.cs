@@ -34,6 +34,7 @@ public class rage : MonoBehaviour
     if (other.gameObject.tag == "Player")
     {
       elephant_main = other.gameObject;
+      benjamin_move.rageSound.Play();
       other.gameObject.transform.localScale = new Vector3(scale, scale, scale);
       m = elephant_material.GetComponent<SkinnedMeshRenderer>().material;
       m.color = Color.red;

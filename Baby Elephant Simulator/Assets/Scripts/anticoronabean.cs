@@ -24,13 +24,15 @@ public class anticoronabean : MonoBehaviour
   private GameObject closestEnemy;
   private bool inConversion = false;
   public AudioSource coronaLie;
+  public AudioSource coronaUrg;
   public int life_points;
   public GameObject normal_bean;
+  bool patroling;
 
   void Start()
   {
     game = GameObject.Find("Benjamin Blümchen").GetComponent<Game>();
-    life_points = 5;
+    life_points = 2;
   }
 
   private GameObject FindClosestEnemy()
@@ -98,6 +100,7 @@ public class anticoronabean : MonoBehaviour
   {
     if (other.gameObject.CompareTag("Player"))
     {
+      coronaUrg.Play();
       life_points--;
       if (life_points <= 0)
       {
@@ -150,7 +153,8 @@ public class anticoronabean : MonoBehaviour
     {
       if (Agent.isActiveAndEnabled)
       {
-        Agent.SetDestination(walkPoint);
+        if (Agent.transform.position.y == 0)
+          Agent.SetDestination(walkPoint);
       }
     }
 

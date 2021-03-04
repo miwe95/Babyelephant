@@ -133,7 +133,8 @@ public class commoner : MonoBehaviour
     {
       if (Agent.isActiveAndEnabled)
       {
-        Agent.SetDestination(walkPoint);
+        if (Agent.transform.position.y == 0)
+          Agent.SetDestination(walkPoint);
       }
     }
 
