@@ -24,10 +24,13 @@ public class anticoronabean : MonoBehaviour
   private GameObject closestEnemy;
   private bool inConversion = false;
   public AudioSource coronaLie;
+  public int life_points;
+  public GameObject normal_bean;
 
   void Start()
   {
     game = GameObject.Find("Benjamin Blümchen").GetComponent<Game>();
+    life_points = 5;
   }
 
   private GameObject FindClosestEnemy()
@@ -91,6 +94,19 @@ public class anticoronabean : MonoBehaviour
 
   }
 
+  void OnTriggerEnter(Collider other)
+  {
+    if (other.gameObject.CompareTag("Player"))
+    {
+      life_points--;
+      if (life_points <= 0)
+      {
+        Instantiate(normal_bean, transform.position, Quaternion.identity);
+        game.GivePoint(1);
+        Destroy(gameObject);
+      }
+    }
+  }
   void OnTriggerExit(Collider other)
   {
     if (other.gameObject.name == "worldcollider")
@@ -113,10 +129,7 @@ public class anticoronabean : MonoBehaviour
     {
       inConversion = false;
       chaseTimer = 0;
-      //Destroy(gameObject);
     }
-
-
   }
 
   private void OnCollisionExit(Collision other)

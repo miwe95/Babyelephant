@@ -10,67 +10,63 @@ public class Game : MonoBehaviour
   public int maxHealth = 10;
   public int currentHealth;
   public HealthBar healthBar;
-  
+
   // BEANS
   public int maxBean = 10;
   public int currentBean;
   public BeansBar beanBar;
-  
+
   // POINTS
   public int maxPoint = 10;
   public int currentPoint;
   public PointsBar pointBar;
-  
+
   // Start is called before the first frame update
-  
+
   /*
   public Text corona_bean_counter_text;
   public Text points_counter_text;
   //public int corona_bean_counter;
   public float point_counter;
   */
-  
+
 
   void Start()
   {
     // HEALTH
     currentHealth = maxHealth;
     healthBar.setMaxHealth(maxHealth);
-    
+
     // BEANS
     currentBean = 1;
     beanBar.setMaxBean(maxBean);
-    
+
     // POINTS
     currentPoint = 0;
     pointBar.setMaxPoint(maxPoint);
-         
-      /*  
-    corona_bean_counter = 1;
-    point_counter = 0;
-    */
+
+    /*  
+  corona_bean_counter = 1;
+  point_counter = 0;
+  */
   }
 
   // Update is called once per frame
   void Update()
   {
     // HEALTH
-    if (Input.GetKeyDown("a")) // TODO: pls change this part here accordingly to an appropriate health condition
+    if (currentHealth <= 0)
     {
-      TakeHealth(1);
-      
-      if (currentHealth <= 0)
-        SceneManager.LoadScene("GameOverScreen");
+      SceneManager.LoadScene("GameOverScreen");
     }
-    
     // BEANS
     if (currentBean == 10)
-       SceneManager.LoadScene("GameOverScreen");
-    
+      SceneManager.LoadScene("GameOverScreen");
+
     // POINTS
     if (currentPoint == 10)
-       SceneManager.LoadScene("LevelFinishedScreen");
-    
+      SceneManager.LoadScene("LevelFinishedScreen");
+
     /*
     corona_bean_counter_text.text = "Corona Beans: " + corona_bean_counter.ToString();
     points_counter_text.text = "Points: " + point_counter.ToString();
@@ -81,17 +77,17 @@ public class Game : MonoBehaviour
     if (point_counter == 10)
       Debug.Log("Win, TODO: ADD WIN SCENE");
       */
-    
+
   }
-  
-  
+
+
   // HEALTH
   public void TakeHealth(int health)
   {
     currentHealth -= health;
     healthBar.setHealth(currentHealth);
   }
-  
+
   // BEANS
   public void TakeBean(int bean)
   {
@@ -103,19 +99,19 @@ public class Game : MonoBehaviour
     currentBean += bean;
     beanBar.setBean(currentBean);
   }
-  
+
   // POINTS
   public void TakePoint(int point)
   {
     currentPoint -= point;
     pointBar.setPoint(currentPoint);
   }
-  
+
   public void GivePoint(int point)
   {
     currentPoint += point;
     pointBar.setPoint(currentPoint);
   }
-  
-  
+
+
 }

@@ -79,6 +79,7 @@ public class commoner : MonoBehaviour
       {
         Instantiate(Enemy, transform.position, Quaternion.identity);
         game.GiveBean(1);
+        game.TakeHealth(1);
         // game.corona_bean_counter++;
         Destroy(gameObject);
       }
