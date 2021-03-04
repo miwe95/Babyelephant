@@ -15,7 +15,8 @@ public class coronaspawner : MonoBehaviour
   void Start()
   {
     game = GameObject.Find("Benjamin Blümchen").GetComponent<Game>();
-    game.corona_bean_counter++;
+    game.GiveBean(1);
+    //game.corona_bean_counter++;
     Instantiate(coronaPrefab, coronaSpawnpoint.position, coronaSpawnpoint.rotation);
   }
 
