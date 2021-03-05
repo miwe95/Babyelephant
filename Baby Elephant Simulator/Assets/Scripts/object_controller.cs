@@ -24,6 +24,12 @@ public class object_controller : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    if (transform.position.y >= 70f)
+    {
+      rb.useGravity = true;
+      Debug.Log("Gravity activated for: " + gameObject.name);
+    }
+
   }
 
   void deleteGasStation()
