@@ -18,11 +18,18 @@ public class WelcomeScreen : MonoBehaviour
    
    string[] messageArray = new string[]
        {
-         "As you have probably already noticed, the damned Corona Virus is currently up to mischief ...",
-         "And yes, we have to do something about that ...",
-         "So, our job is to free the city from this f#&$ing Virus ...",
-         "It won't be easy, but ...",
-         "Together we can do it!",
+         "As you have probably already noticed, the damned corona virus is currently doing its mischief ...",
+         "Our job is to free the city from the virus ...",
+         "So, here are some useful tips and instructions that will help us with that ...",
+         "Corona deniers are everywhere in the city who protest and we have to fight them and get points ...",
+         "You will see the points bar (star) in the lower right corner of the screen ...",
+         "There is also a health bar (heart) in the lower right corner of the screen, which represents my state of health ...",
+         "Please use the arrow keys to navigate me through the level ...",
+         "To jump, just press the space key ...",
+         "I am also able to shoot. To do this, simply press e on your keyboard ...",
+         "To kick the enemies please just press the q key ...",
+         "And finally, there are some very useful poper-ups everywhere in the level ...",
+         "Like the star that makes me jump super high and the ruby wich starts my rage mode...",
          "Alright?",
          "Let's go!",
        };
@@ -41,7 +48,7 @@ public class WelcomeScreen : MonoBehaviour
        }
        else
        {
-         if (i <= 5)
+         if (i <= 12)
        {
          message = messageArray[i];
          StartTalkingSound();

@@ -21,6 +21,7 @@ public class MusicPlayer : MonoBehaviour
     {
       //audioSrc = GameObject.FindGameObjectWithTag("musicplayer_runforever").GetComponent<AudioSource>();
       Destroy(audios[0]);
+      DontDestroyOnLoad(audioSrc.gameObject);
     }
     // if more then one music player is in the scene
     //destroy ourselves
