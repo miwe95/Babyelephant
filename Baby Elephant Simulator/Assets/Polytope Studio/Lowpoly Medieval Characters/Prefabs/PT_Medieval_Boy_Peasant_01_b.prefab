@@ -552,6 +552,9 @@ GameObject:
   - component: {fileID: 6869582078528895688}
   - component: {fileID: 28044218}
   - component: {fileID: 28044215}
+  - component: {fileID: 815279072527436703}
+  - component: {fileID: 5559902770537700310}
+  - component: {fileID: 6227461510130835539}
   m_Layer: 0
   m_Name: PT_Medieval_Boy_Peasant_01_b
   m_TagString: Untagged
@@ -623,6 +626,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 125
+--- !u!65 &815279072527436703
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6869582078536304904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.71, z: 0}
+--- !u!114 &5559902770537700310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6869582078536304904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c87aa2f44c6944784af66743ab0ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 15
+  ps: {fileID: 0}
+  gas_station: {fileID: 0}
+--- !u!65 &6227461510130835539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6869582078536304904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 1.36, z: 0.28}
+  m_Center: {x: 0, y: 0.71, z: 0}
 --- !u!1 &6869582078536304906
 GameObject:
   m_ObjectHideFlags: 0
