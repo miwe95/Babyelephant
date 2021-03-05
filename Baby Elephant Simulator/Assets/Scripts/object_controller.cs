@@ -13,6 +13,7 @@ public class object_controller : MonoBehaviour
   public float thrust = 1f;
   public ParticleSystem ps;
   public GameObject gas_station;
+  public AudioSource explosion;
   // Start is called before the first frame update
   void Start()
   {
@@ -35,6 +36,7 @@ public class object_controller : MonoBehaviour
     if (other.gameObject.name == "Benjamin Blümchen" && gameObject.name == "Gas_station_A")
     {
       ps.Play();
+      explosion.Play();
       rb.useGravity = true;
       //Debug.Log("crashed");
       Vector3 pos = other.gameObject.transform.up;

@@ -38,13 +38,13 @@ public class Game : MonoBehaviour
     healthBar.setMaxHealth(maxHealth);
 
     // BEANS
-    currentBean = 1;
+    currentBean = 0;
     beanBar.setMaxBean(maxBean);
 
     // POINTS
     currentPoint = 0;
-    pointBar.setMaxPoint(maxPoint);
-
+    pointBar.setMaxPoint(10);
+    pointBar.setPoint(currentPoint);
     /*  
   corona_bean_counter = 1;
   point_counter = 0;

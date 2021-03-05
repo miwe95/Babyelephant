@@ -30,7 +30,7 @@ public class MovementController : MonoBehaviour
   public AudioSource superJump;
   public AudioSource blob;
 
-    public GameObject bulletPrefab;
+  public GameObject bulletPrefab;
   public Transform bulletSpawnpoint;
   GameObject clone;
 
@@ -120,6 +120,7 @@ public class MovementController : MonoBehaviour
     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), rotationSpeed);
   }
 
+
   void MovementManager()
   {
     if (characterController.isGrounded) Gravity = 0;
@@ -139,6 +140,7 @@ public class MovementController : MonoBehaviour
       Rigidbody bulletRB = bullet.GetComponentInChildren<Rigidbody>();
       Debug.Log(bulletRB);
       bulletRB.AddForce(transform.forward * 500, ForceMode.Impulse);
+      Destroy(bullet, 5);
 
     }
 
@@ -161,7 +163,7 @@ public class MovementController : MonoBehaviour
     if (characterController.isGrounded && Input.GetKey(KeyCode.Q))
     {
       animator.SetBool("spin", true);
-      movementSpeed = 30;
+      movementSpeed = 10;
     }
     else
     {
