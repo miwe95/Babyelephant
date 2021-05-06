@@ -1,7 +1,7 @@
 # Babyelephant Game
 
 ### 1. Short Game Description
-You play a little baby elephant who's goal it is to prevent CoVid from spreading. Different types of of Task needs to be performed to keep the population safe. The elephant needs to enforce social distancing between people by ramming into them. Furthermore you have different power-ups to pick up. For example: The Super-Jump and Rage-Mode. There are also different types of NPCs. The Commoner-Bean needs to be protected from the Corona-Beans and social distancing needs to be enforced.
+You play a little baby elephant who's goal it is to prevent CoVid from spreading. Different types of of Task needs to be performed to keep the population safe. The elephant needs to enforce social distancing between people by ramming into them. Furthermore you have different power-ups to pick up. For example: The Super-Jump and Rage-Mode. There are also different types of NPCs. The Commoner-Bean needs to be protected from the Corona-Beans and social distancing needs to be enforced. Nicd
 
 ### 2. Names and Matricuklation Numbers
 - Jakob Rupitz 11706907
